@@ -5,7 +5,7 @@ import click, tqdm, random
 
 from slam import *
 
-JUST_PLOT_MAP = True
+JUST_PLOT_MAP = False
 
 def run_dynamics_step(src_dir, log_dir, idx, t0=0, draw_fig=False):
     """
@@ -107,7 +107,7 @@ def run_slam(src_dir, log_dir, idx):
     be something larger than the very small value we picked in run_dynamics_step function
     above.
     """
-    slam = slam_t(resolution=0.5, Q=np.diag([1e-4,1e-4,1e-5]))
+    slam = slam_t(resolution=0.5, Q=np.diag([1e-6,1e-6,1e-6]))
     slam.read_data(src_dir, idx)
     T = len(slam.lidar_files)
     Ts_poses = len(slam.poses)
