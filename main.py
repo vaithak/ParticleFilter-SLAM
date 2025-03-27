@@ -14,7 +14,7 @@ def run_dynamics_step(src_dir, log_dir, idx, t0=0, draw_fig=False):
     using odometry information obtained form the lidar. The second is the trajectory
     using the PF with a very small dynamics noise. The two figures should look similar.
     """
-    slam = slam_t(Q=1e-8*np.eye(3))
+    slam = slam_t(Q=1e-5*np.eye(3))
     slam.read_data(src_dir, idx)
 
     # Trajectory using odometry (xz and yaw) in the lidar data
